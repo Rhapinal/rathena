@@ -17,3 +17,10 @@
 //	clif_specialeffect(&sd->bl, EF_HEARTCASTING, AREA);
 //	return 0;
 //}
+
+ACMD_FUNC(newcommand)
+{
+	clif_displaymessage(fd, "It works!");
+	clif_specialeffect(&sd->bl, EF_HEARTCASTING, AREA);
+	return 0;
+}

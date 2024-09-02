@@ -3754,6 +3754,106 @@ ACMD_FUNC(lostskill)
 }
 
 /*==========================================
+ * GetPlayerData
+ *------------------------------------------*/
+ACMD_FUNC(getplayerdata) {
+	
+		nullpo_retr(-1, sd);
+		auto status = &sd->base_status;
+
+		char msg[CHAT_SIZE_MAX];
+
+		const char* text;
+
+		//ELE_NEUTRAL = 0,
+		//	ELE_WATER,
+		//	ELE_EARTH,
+		//	ELE_FIRE,
+		//	ELE_WIND,
+		//	ELE_POISON,
+		//	ELE_HOLY,
+		//	ELE_DARK,
+		//	ELE_GHOST,
+		//	ELE_UNDEAD,
+		switch (status->def_ele) {
+			case ELE_NEUTRAL:	//0
+				text = "Neutral";
+			break;
+			case ELE_WATER:		//1
+				text = "WATER";
+				break;
+			case ELE_EARTH:		//2
+				text = "Earth";
+				break;
+			case ELE_FIRE:		//3
+				text = "Fire";
+				break;
+			case ELE_WIND:		//4
+				text = "Wind";
+				break;
+			case ELE_POISON:	//5
+				text = "Poison";
+				break;
+			case ELE_HOLY:		//6
+				text = "Holy";
+				break;
+			case ELE_DARK:		//7
+				text = "Shadow";
+				break;
+			case ELE_GHOST:		//8
+				text = "Ghost";
+				break;
+			case ELE_UNDEAD:	//9
+				text = "Undead";
+				break;
+
+		}
+
+		int sum = 0;
+		for (int num : status->ele_level_vector) {
+			sum += num;
+		}
+
+		safesnprintf(msg, sizeof(msg), "Armor Element: %s (Level %d) [Total Val- %d]", text, status->ele_lv, sum);
+		clif_displaymessage(fd, msg);
+		/*if (sd->bl.m == map_mapname2mapid("prontera")) {
+			
+			return 0;
+		}
+	
+		if (pc_isdead(sd)) {
+			clif_displaymessage(fd, "Cannot @afk if you are dead.");
+			return -1;
+		}
+	
+		if (map[sd->bl.m].flag.autotrade == battle_config.autotrade_mapflag)
+		 {
+		
+			if (map[sd->bl.m].flag.pvp || map[sd->bl.m].flag.gvg) {
+			clif_displaymessage(fd, "You may not use the @afk maps PVP or GVG.");
+			return -1;
+		}
+		
+		sd->state.autotrade = 1;
+		sd->state.monster_ignore = 1;
+		pc_setsit(sd);
+		skill_sit(sd, 1);
+		clif_sitting(&sd->bl);
+		clif_changelook(&sd->bl, LOOK_HEAD_TOP, 471);
+		clif_specialeffect(&sd->bl, 234, AREA);
+		if (battle_config.afk_timeout)
+			 {
+			int timeout = atoi(message);
+			status_change_start(NULL, &sd->bl, SC_AUTOTRADE, 10000, 0, 0, 0, 0, ((timeout > 0) ? min(timeout, battle_config.afk_timeout) : battle_config.afk_timeout) * 60000, 0);
+			}
+		 clif_authfail_fd(fd, 15);
+		}
+		else
+		 clif_displaymessage(fd, "@afk is not allowed on this map.");*/
+	return 0;
+	
+}
+/*==========================================
  *
  *------------------------------------------*/
 ACMD_FUNC(spiritball)
@@ -11310,6 +11410,7 @@ void atcommand_basecommands(void) {
 		ACMD_DEFR(enchantgradeui, ATCMD_NOCONSOLE|ATCMD_NOAUTOTRADE),
 		ACMD_DEFR(roulette, ATCMD_NOCONSOLE|ATCMD_NOAUTOTRADE),
 		ACMD_DEF(setcard),
+		ACMD_DEF(getplayerdata)
 	};
 	AtCommandInfo* atcommand;
 	int i;

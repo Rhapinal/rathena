@@ -3830,8 +3830,30 @@ void pc_bonus(map_session_data *sd,int type,int val)
 			break;
 		case SP_DEFELE:
 			PC_BONUS_CHK_ELEMENT(val,SP_DEFELE);
-			if(sd->state.lr_flag != 2)
-				status->def_ele=val;
+			if (sd->state.lr_flag != 2)
+			{
+				status->ele_level_vector.push_back(val);
+
+				
+				sort(status->ele_level_vector.begin(), status->ele_level_vector.end());
+				int level = 1;
+				int sum = 0;
+				for (int num : status->ele_level_vector) {
+					if (sum % 10 == num) {
+						level += 1;
+					}
+					else {
+						sum += num;
+						if (sum >= 10) {
+							sum = sum % 10;
+							level += 1;
+						}
+					}
+				}
+
+				status->def_ele = sum;
+				status->ele_lv = level;
+			}
 			break;
 		case SP_MAXHP:
 			if(sd->state.lr_flag == 2)

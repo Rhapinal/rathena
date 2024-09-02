@@ -13749,9 +13749,6 @@ Body:
     Weight: 700
     Attack: 135
     Range: 2
-    Jobs:
-      BardDancer: true
-    Gender: Female
     Locations:
       Right_Hand: true
     WeaponLevel: 4
@@ -18726,13 +18723,11 @@ Body:
     Buy: 20
     Weight: 500
     Defense: 3
-    Slots: 1
+    Slots: 4
     Jobs:
       All: true
-      Novice: false
+      Novice: true
       SuperNovice: false
-    Classes:
-      Upper: true
     Locations:
       Armor: true
     ArmorLevel: 1

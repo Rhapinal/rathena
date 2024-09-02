@@ -3243,6 +3243,8 @@ struct status_data {
 		class_; /// see enum e_classAE
 
 	struct weapon_atk rhw, lhw; //Right Hand/Left Hand Weapon.
+
+	std::vector<int> ele_level_vector;
 };
 
 ///Additional regen data that only players have.

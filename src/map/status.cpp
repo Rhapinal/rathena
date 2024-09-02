@@ -2079,22 +2079,30 @@ bool status_check_skilluse(struct block_list *src, struct block_list *target, ui
 			if (!skill)
 				return false;
 
-			if (src->type == BL_PC && ((skill_id >= WA_SWING_DANCE && skill_id <= WM_UNLIMITED_HUMMING_VOICE ) ||
-				skill_id == WM_FRIGG_SONG))
-			{ // Lvl 5 Lesson or higher allow you use 3rd job skills while dancing.
-				if( pc_checkskill((TBL_PC*)src,WM_LESSON) < 5 )
-					return false;
-#ifndef RENEWAL
-			} else if(sc->getSCE(SC_LONGING)) { // Allow everything except dancing/re-dancing. [Skotlex]
-				if (skill_id == BD_ENCORE || skill->inf2[INF2_ISSONG] || skill->inf2[INF2_ISENSEMBLE])
-					return false;
-#endif
-			} else if(!skill->inf2[INF2_ALLOWWHENPERFORMING]) // Skills that can be used in dancing state
+			if (skill_id == BD_ENCORE || skill->inf2[INF2_ISSONG] || skill->inf2[INF2_ISENSEMBLE]) 
 				return false;
-#ifndef RENEWAL
-			if ((sc->getSCE(SC_DANCING)->val1&0xFFFF) == CG_HERMODE && skill_id == BD_ADAPTATION)
+		
+
+			if ((sc->getSCE(SC_DANCING)->val1 & 0xFFFF) == CG_HERMODE && skill_id == BD_ADAPTATION)
 				return false; // Can't amp out of Wand of Hermode :/ [Skotlex]
-#endif
+
+
+//			if (src->type == BL_PC && ((skill_id >= WA_SWING_DANCE && skill_id <= WM_UNLIMITED_HUMMING_VOICE ) ||
+//				skill_id == WM_FRIGG_SONG))
+//			{ // Lvl 5 Lesson or higher allow you use 3rd job skills while dancing.
+//				if( pc_checkskill((TBL_PC*)src,WM_LESSON) < 5 )
+//					return true;
+//#ifndef RENEWAL
+//			} else if(sc->getSCE(SC_LONGING)) { // Allow everything except dancing/re-dancing. [Skotlex]
+//				if (skill_id == BD_ENCORE || skill->inf2[INF2_ISSONG] || skill->inf2[INF2_ISENSEMBLE])
+//					return false;
+//#endif
+//			} else if(!skill->inf2[INF2_ALLOWWHENPERFORMING]) // Skills that can be used in dancing state
+//				return true;
+//#ifndef RENEWAL
+//			if ((sc->getSCE(SC_DANCING)->val1&0xFFFF) == CG_HERMODE && skill_id == BD_ADAPTATION)
+//				return false; // Can't amp out of Wand of Hermode :/ [Skotlex]
+//#endif
 		}
 
 		if (skill_id && // Do not block item-casted skills.
@@ -5485,13 +5493,13 @@ void status_calc_state( struct block_list *bl, status_change *sc, std::bitset<SC
 				  || (sc->getSCE(SC_MAGNETICFIELD) && sc->getSCE(SC_MAGNETICFIELD)->val2 != bl->id)
 				  || (sc->getSCE(SC_FEAR) && sc->getSCE(SC_FEAR)->val2 > 0)
 				  || (sc->getSCE(SC_HIDING) && (bl->type != BL_PC || (pc_checkskill(BL_CAST(BL_PC,bl),RG_TUNNELDRIVE) <= 0)))
-				  || (sc->getSCE(SC_DANCING) && sc->getSCE(SC_DANCING)->val4 && (
+				  /*|| (sc->getSCE(SC_DANCING) && sc->getSCE(SC_DANCING)->val4 && (
 #ifndef RENEWAL
 						!sc->getSCE(SC_LONGING) ||
 #endif
 						(sc->getSCE(SC_DANCING)->val1&0xFFFF) == CG_MOONLIT ||
 						(sc->getSCE(SC_DANCING)->val1&0xFFFF) == CG_HERMODE
-						))
+						))*/
 				  || (sc->getSCE(SC_CRYSTALIZE) && bl->type != BL_MOB)
  				 )
 				 sc->cant.move += (start ? 1 : ((sc->cant.move) ? -1 : 0));
@@ -6917,7 +6925,7 @@ static unsigned short status_calc_luk(struct block_list *bl, status_change *sc, 
 	if(sc->getSCE(SC_TRUESIGHT))
 		luk += 5;
 	if(sc->getSCE(SC_GLORIA))
-		luk += 30;
+		luk += sc->getSCE(SC_GLORIA)->val1*8;
 	if(sc->getSCE(SC_MARIONETTE))
 		luk -= sc->getSCE(SC_MARIONETTE)->val4&0xFF;
 	if(sc->getSCE(SC_MARIONETTE2))

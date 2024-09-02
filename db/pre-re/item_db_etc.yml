@@ -2551,6 +2551,7 @@ Body:
     Script: |
       bonus bLuk,2;
       bonus bFlee2,1;
+
   - Id: 4002
     AegisName: Fabre_Card
     Name: Fabre Card
@@ -2615,6 +2616,8 @@ Body:
       bonus bLuk,1;
       bonus bCritical,1;
       bonus bFlee2,1;
+      skill "PR_GLORIA",getskilllv("PR_GLORIA")+2;
+      skill "DC_FORTUNEKISS",getskilllv("DC_FORTUNEKISS")+4;
   - Id: 4007
     AegisName: Pecopeco_Egg_Card
     Name: Peco Peco Egg Card
@@ -3224,6 +3227,10 @@ Body:
       BuyingStore: true
     Script: |
       bonus bDefEle,Ele_Holy;
+      skill "MG_SAFETYWALL",5;
+      skill "AB_HIGHNESSHEAL",5;
+      skill "PR_SANCTUARY", 5;
+      skill "AB_ADORAMUS", 5;
   - Id: 4055
     AegisName: Marina_Card
     Name: Marina Card
@@ -5667,7 +5674,7 @@ Body:
     Flags:
       BuyingStore: true
     Script: |
-      bonus bMaxHP,300;
+      bonus bMaxHP, BaseLevel*30;
       if (readparam(bLuk)>=77) {
          bonus bHPrecovRate,100;
          bonus bSPrecovRate,100;

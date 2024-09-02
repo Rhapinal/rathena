@@ -9056,9 +9056,9 @@ struct Damage battle_calc_misc_attack(struct block_list *src,struct block_list *
 			break;
 #ifndef RENEWAL
 		case BA_DISSONANCE:
-			md.damage = 30 + skill_lv * 10;
+			md.damage = sstatus->dex * (100 + skill_lv * 20)/100;
 			if (sd)
-				md.damage += 3 * pc_checkskill(sd,BA_MUSICALLESSON);
+				md.damage *= 1 + 5 * pc_checkskill(sd,BA_MUSICALLESSON)/100;
 			break;
 #endif
 		case NPC_SELFDESTRUCTION:

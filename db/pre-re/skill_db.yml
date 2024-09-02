@@ -2655,7 +2655,7 @@ Body:
   - Id: 75
     Name: PR_GLORIA
     Description: Gloria
-    MaxLevel: 5
+    MaxLevel: 20
     Type: Magic
     TargetType: Self
     DamageFlags:
@@ -2667,6 +2667,36 @@ Body:
     CastCancel: true
     AfterCastActDelay: 2000
     Duration1:
+      - Level: 1
+        Time: 10000
+      - Level: 2
+        Time: 15000
+      - Level: 3
+        Time: 20000
+      - Level: 4
+        Time: 25000
+      - Level: 5
+        Time: 30000
+      - Level: 1
+        Time: 10000
+      - Level: 2
+        Time: 15000
+      - Level: 3
+        Time: 20000
+      - Level: 4
+        Time: 25000
+      - Level: 5
+        Time: 30000
+      - Level: 1
+        Time: 10000
+      - Level: 2
+        Time: 15000
+      - Level: 3
+        Time: 20000
+      - Level: 4
+        Time: 25000
+      - Level: 5
+        Time: 30000
       - Level: 1
         Time: 10000
       - Level: 2
@@ -8954,7 +8984,7 @@ Body:
   - Id: 329
     Name: DC_FORTUNEKISS
     Description: Lady Luck
-    MaxLevel: 10
+    MaxLevel: 20
     Type: Misc
     TargetType: Self
     DamageFlags:
@@ -8988,9 +9018,29 @@ Body:
           Amount: 67
         - Level: 10
           Amount: 70
-      Weapon:
-        Musical: true
-        Whip: true
+        - Level: 11
+          Amount: 40
+        - Level: 12
+          Amount: 30
+        - Level: 13
+          Amount: 20
+        - Level: 14
+          Amount: 10
+        - Level: 15
+          Amount: 1
+        - Level: 16
+          Amount: 1
+        - Level: 17
+          Amount: 1
+        - Level: 18
+          Amount: 1
+        - Level: 19
+          Amount: 1
+        - Level: 20
+          Amount: 1
+      # Weapon:
+      #   Musical: true
+      #   Whip: true
     Unit:
       Id: Fortunekiss
       Layout: 3
@@ -9037,7 +9087,7 @@ Body:
         - Level: 10
           Amount: 85
       Weapon:
-        Musical: true
+        Musical: false
         Whip: true
     Unit:
       Id: Serviceforyou
@@ -34042,6 +34092,325 @@ Body:
     SplashArea: 1
     Requires:
       SpCost: 80
+  - Id: 8443
+    Name: EM_EL_FLAMETECHNIC
+    Description: Flame Technic
+    MaxLevel: 1
+    TargetType: Self
+    DamageFlags:
+      NoDamage: true
+    Hit: Single
+    HitCount: 1
+    CastCancel: true
+    Duration1: -1
+    Requires:
+      SpCost: 1
+    Status: FlameTechnic_Option
+  - Id: 8444
+    Name: EM_EL_FLAMEARMOR
+    Description: Flame Armor
+    MaxLevel: 1
+    TargetType: Self
+    DamageFlags:
+      NoDamage: true
+    Hit: Single
+    HitCount: 1
+    CastCancel: true
+    Duration1: -1
+    Requires:
+      SpCost: 1
+    Status: FlameArmor_Option
+  - Id: 8445
+    Name: EM_EL_FLAMEROCK
+    Description: Flame Rock
+    MaxLevel: 1
+    Type: Magic
+    TargetType: Attack
+    DamageFlags:
+      Splash: true
+      IgnoreDefense: true
+    Range: 6
+    Hit: Multi_Hit
+    HitCount: -2
+    Element: Fire
+    SplashArea: 3
+    CastCancel: true
+    AfterCastActDelay: 500
+    Cooldown: 3000
+    FixedCastTime: 500
+    Requires:
+      SpCost: 1
+  - Id: 8446
+    Name: EM_EL_COLD_FORCE
+    Description: Cold Force
+    MaxLevel: 1
+    TargetType: Self
+    DamageFlags:
+      NoDamage: true
+    Hit: Single
+    HitCount: 1
+    CastCancel: true
+    Duration1: -1
+    Requires:
+      SpCost: 1
+    Status: Cold_Force_Option
+  - Id: 8447
+    Name: EM_EL_CRYSTAL_ARMOR
+    Description: Crystal Armor
+    MaxLevel: 1
+    TargetType: Self
+    DamageFlags:
+      NoDamage: true
+    Hit: Single
+    HitCount: 1
+    CastCancel: true
+    Duration1: -1
+    Requires:
+      SpCost: 1
+    Status: Crystal_Armor_Option
+  - Id: 8448
+    Name: EM_EL_AGE_OF_ICE
+    Description: Age Of Ice
+    MaxLevel: 1
+    Type: Magic
+    TargetType: Attack
+    DamageFlags:
+      Splash: true
+      IgnoreDefense: true
+    Range: 9
+    Hit: Multi_Hit
+    HitCount: -4
+    Element: Water
+    SplashArea: 5
+    CastCancel: true
+    AfterCastActDelay: 500
+    Cooldown: 3000
+    FixedCastTime: 500
+    Requires:
+      SpCost: 1
+  - Id: 8449
+    Name: EM_EL_GRACE_BREEZE
+    Description: Grace Breeze
+    MaxLevel: 1
+    TargetType: Self
+    DamageFlags:
+      NoDamage: true
+    Hit: Single
+    HitCount: 1
+    CastCancel: true
+    Duration1: -1
+    Requires:
+      SpCost: 1
+    Status: Grace_Breeze_Option
+  - Id: 8450
+    Name: EM_EL_EYES_OF_STORM
+    Description: Eyes Of Storm
+    MaxLevel: 1
+    TargetType: Self
+    DamageFlags:
+      NoDamage: true
+    Hit: Single
+    HitCount: 1
+    CastCancel: true
+    Duration1: -1
+    Requires:
+      SpCost: 1
+    Status: Eyes_Of_Storm_Option
+  - Id: 8451
+    Name: EM_EL_STORM_WIND
+    Description: Storm Wind
+    MaxLevel: 1
+    Type: Magic
+    TargetType: Attack
+    DamageFlags:
+      Splash: true
+      IgnoreDefense: true
+    Range: 11
+    Hit: Multi_Hit
+    HitCount: -4
+    Element: Wind
+    SplashArea: 2
+    CastCancel: true
+    AfterCastActDelay: 500
+    Cooldown: 3000
+    FixedCastTime: 500
+    Requires:
+      SpCost: 1
+  - Id: 8452
+    Name: EM_EL_EARTH_CARE
+    Description: Earth Care
+    MaxLevel: 1
+    TargetType: Self
+    DamageFlags:
+      NoDamage: true
+    Hit: Single
+    HitCount: 1
+    CastCancel: true
+    Duration1: -1
+    Requires:
+      SpCost: 1
+    Status: Earth_Care_Option
+  - Id: 8453
+    Name: EM_EL_STRONG_PROTECTION
+    Description: Strong Protection
+    MaxLevel: 1
+    TargetType: Self
+    DamageFlags:
+      NoDamage: true
+    Hit: Single
+    HitCount: 1
+    CastCancel: true
+    Duration1: -1
+    Requires:
+      SpCost: 1
+    Status: Strong_Protection_Option
+  - Id: 8454
+    Name: EM_EL_AVALANCHE
+    Description: Avalanche
+    MaxLevel: 1
+    Type: Magic
+    TargetType: Attack
+    DamageFlags:
+      Splash: true
+      IgnoreDefense: true
+    Range: 5
+    Hit: Multi_Hit
+    HitCount: 7
+    Element: Earth
+    SplashArea: 4
+    CastCancel: true
+    AfterCastActDelay: 500
+    Cooldown: 3000
+    FixedCastTime: 500
+    Requires:
+      SpCost: 1
+  - Id: 8455
+    Name: EM_EL_DEEP_POISONING
+    Description: Deep Poisoning
+    MaxLevel: 1
+    TargetType: Self
+    DamageFlags:
+      NoDamage: true
+    Hit: Single
+    HitCount: 1
+    CastCancel: true
+    Duration1: -1
+    Requires:
+      SpCost: 1
+    Status: Deep_Poisoning_Option
+  - Id: 8456
+    Name: EM_EL_POISON_SHIELD
+    Description: Poison Shield
+    MaxLevel: 1
+    TargetType: Self
+    DamageFlags:
+      NoDamage: true
+    Hit: Single
+    HitCount: 1
+    CastCancel: true
+    Duration1: -1
+    Requires:
+      SpCost: 1
+    Status: Poison_Shield_Option
+  - Id: 8457
+    Name: EM_EL_DEADLY_POISON
+    Description: Deadly Poison
+    MaxLevel: 1
+    Type: Magic
+    TargetType: Attack
+    DamageFlags:
+      Splash: true
+      IgnoreDefense: true
+    Range: 5
+    Hit: Multi_Hit
+    HitCount: 5
+    Element: Poison
+    SplashArea: 4
+    CastCancel: true
+    AfterCastActDelay: 500
+    Cooldown: 3000
+    FixedCastTime: 500
+    Requires:
+      SpCost: 1
+  - Id: 8601
+    Name: ABR_BATTLE_BUSTER
+    Description: Battle Buster
+    MaxLevel: 1
+    Type: Weapon
+    TargetType: Attack
+    Range: 1
+    Hit: Single
+    HitCount: 1
+    CastCancel: true
+    AfterCastActDelay: 500
+    Cooldown: 5000
+    FixedCastTime: 500
+    Requires:
+      SpCost: 1
+  - Id: 8602
+    Name: ABR_DUAL_CANNON_FIRE
+    Description: Dual Cannon Fire
+    MaxLevel: 1
+    Type: Weapon
+    TargetType: Attack
+    Range: 9
+    Hit: Single
+    HitCount: 1
+    CastCancel: true
+    AfterCastActDelay: 500
+    Cooldown: 5000
+    FixedCastTime: 500
+    Requires:
+      SpCost: 1
+  - Id: 8603
+    Name: ABR_NET_REPAIR
+    Description: Net Repair
+    MaxLevel: 1
+    TargetType: Self
+    DamageFlags:
+      NoDamage: true
+      Splash: true
+    Hit: Single
+    HitCount: 1
+    SplashArea: 12
+    CastCancel: true
+    AfterCastActDelay: 500
+    Cooldown: 5000
+    FixedCastTime: 500
+    Requires:
+      SpCost: 1
+  - Id: 8604
+    Name: ABR_NET_SUPPORT
+    Description: Net Support
+    MaxLevel: 1
+    TargetType: Self
+    DamageFlags:
+      NoDamage: true
+      Splash: true
+    Hit: Single
+    HitCount: 1
+    SplashArea: 12
+    CastCancel: true
+    AfterCastActDelay: 500
+    Cooldown: 5000
+    FixedCastTime: 500
+    Requires:
+      SpCost: 1
+  - Id: 8605
+    Name: ABR_INFINITY_BUSTER
+    Description: Infinity Buster
+    MaxLevel: 1
+    Type: Weapon
+    TargetType: Attack
+    Range: 9
+    Hit: Single
+    HitCount: 1
+    CastCancel: true
+    AfterCastActDelay: 500
+    Cooldown: 5000
+    FixedCastTime: 500
+    Requires:
+      SpCost: 1
   - Id: 10000
     Name: GD_APPROVAL
     Description: Official Guild Approval
